@@ -1,0 +1,41 @@
+lang: en
+timezone: Asia/Tokyo
+
+title: Hikaru Nguyen
+tagline: "film, code, and thoughts"
+description: "Personal blog of Hikaru Nguyen"
+
+url: "https://hikarunguyen.xyz"
+baseurl: ""
+
+github:
+  username: quang-hiakari
+
+social:
+  name: Hikaru Nguyen
+  email: quang.nm2201@gmail.com
+  links: []
+
+theme: jekyll-theme-chirpy
+
+paginate: 10
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      comments: false
+      toc: true
+
+jekyll-archives:
+  enabled:
+    - categories
+    - tags
+  layouts:
+    category: category
+    tag: tag
+  permalinks:
+    category: /categories/:name/
+    tag: /tags/:name/

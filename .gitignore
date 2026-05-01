@@ -1,8 +1,11 @@
 *.gem
 .bundle
 .sass-cache
+.jekyll-cache
+.jekyll-metadata
 _site
-Gemfile.lock
+# Gemfile.lock intentionally omitted — generate locally and commit after first setup
 .DS_Store
 vendor
 plans/
+docs/
