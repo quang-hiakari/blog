@@ -1,19 +1,17 @@
 <!-- Post calendar widget: renders current month, dots on dates with posts -->
-<div id="post-calendar" class="card mb-4">
-  <div class="card-header d-flex align-items-center justify-content-between px-3 py-2">
-    <button id="cal-prev" aria-label="Previous month" style="background:none;border:none;cursor:pointer;color:var(--text-muted-color);padding:0 4px;font-size:0.9rem;">&#8249;</button>
-    <span id="cal-title" style="font-size:0.8rem;font-weight:600;letter-spacing:0.05em;color:var(--label-color);text-transform:uppercase;"></span>
-    <button id="cal-next" aria-label="Next month" style="background:none;border:none;cursor:pointer;color:var(--text-muted-color);padding:0 4px;font-size:0.9rem;">&#8250;</button>
+<section id="post-calendar">
+  <div class="d-flex align-items-center justify-content-between mt-2 mb-1 me-3">
+    <button id="cal-prev" aria-label="Previous month" style="background:none;border:none;cursor:pointer;color:var(--text-muted-color);padding:0 4px;font-size:1rem;line-height:1;">&#8249;</button>
+    <h2 id="cal-title" class="panel-heading mb-0" style="font-size:0.8rem;"></h2>
+    <button id="cal-next" aria-label="Next month" style="background:none;border:none;cursor:pointer;color:var(--text-muted-color);padding:0 4px;font-size:1rem;line-height:1;">&#8250;</button>
   </div>
-  <div class="card-body p-2">
-    <table id="cal-table" style="width:100%;border-collapse:collapse;table-layout:fixed;">
-      <thead>
-        <tr id="cal-head"></tr>
-      </thead>
-      <tbody id="cal-body"></tbody>
-    </table>
-  </div>
-</div>
+  <table id="cal-table" style="width:100%;border-collapse:collapse;table-layout:fixed;margin-bottom:0.5rem;">
+    <thead>
+      <tr id="cal-head"></tr>
+    </thead>
+    <tbody id="cal-body"></tbody>
+  </table>
+</section>
 
 <script>
 (function () {
@@ -93,7 +91,7 @@
         'position:relative;',
         isToday
           ? 'background:var(--link-color);color:#fff;font-weight:700;'
-          : 'color:var(--text-color);'
+          : 'color:var(--text-muted-color);'
       ].join('');
 
       if (hasPost && !isToday) {

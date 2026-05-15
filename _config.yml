@@ -18,6 +18,11 @@ social:
 
 theme: jekyll-theme-chirpy
 
+collections:
+  tabs:
+    output: true
+    sort_by: order
+
 paginate: 10
 
 defaults:

@@ -1,0 +1,138 @@
+<div class="cv-wrapper">
+
+  <section class="cv-section">
+    <h2>Experience</h2>
+    <div class="cv-entry">
+      <div class="cv-entry-header">
+        <strong>Your Role</strong>
+        <span class="cv-date">20XX – Present</span>
+      </div>
+      <div class="cv-company">Company Name</div>
+      <p>Brief description of responsibilities and accomplishments.</p>
+    </div>
+  </section>
+
+  <section class="cv-section">
+    <h2>Education</h2>
+    <div class="cv-entry">
+      <div class="cv-entry-header">
+        <strong>Degree / Field</strong>
+        <span class="cv-date">20XX – 20XX</span>
+      </div>
+      <div class="cv-company">University Name</div>
+    </div>
+  </section>
+
+  <section class="cv-section">
+    <h2>Skills</h2>
+    <div class="cv-skills">
+      <span class="cv-skill">Skill 1</span>
+      <span class="cv-skill">Skill 2</span>
+      <span class="cv-skill">Skill 3</span>
+    </div>
+  </section>
+
+  <section class="cv-section">
+    <h2>Links</h2>
+    <ul class="cv-links">
+      <li><i class="fab fa-github fa-fw"></i> <a href="https://github.com/quang-hiakari" target="_blank" rel="noopener">github.com/quang-hiakari</a></li>
+      <li><i class="fas fa-globe fa-fw"></i> <a href="https://hikarunguyen.xyz" target="_blank" rel="noopener">hikarunguyen.xyz</a></li>
+    </ul>
+  </section>
+
+</div>
+
+<style>
+.cv-wrapper {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+.cv-section {
+  margin-bottom: 2rem;
+}
+
+.cv-section h2 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted-color);
+  border-bottom: 1px solid var(--main-border-color);
+  padding-bottom: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.cv-entry {
+  margin-bottom: 1.25rem;
+}
+
+.cv-entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.cv-entry-header strong {
+  color: var(--heading-color);
+  font-size: 0.95rem;
+}
+
+.cv-date {
+  font-size: 0.78rem;
+  color: var(--text-muted-color);
+  white-space: nowrap;
+}
+
+.cv-company {
+  font-size: 0.85rem;
+  color: var(--link-color);
+  margin: 0.15rem 0 0.35rem;
+}
+
+.cv-entry p {
+  font-size: 0.88rem;
+  color: var(--text-color);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.cv-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.cv-skill {
+  font-size: 0.78rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid var(--main-border-color);
+  color: var(--text-muted-color);
+}
+
+.cv-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.cv-links li {
+  font-size: 0.88rem;
+  color: var(--text-muted-color);
+}
+
+.cv-links a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.cv-links a:hover {
+  text-decoration: underline;
+}
+</style>
