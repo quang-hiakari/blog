@@ -1,0 +1,134 @@
+<!-- Post calendar widget: renders current month, dots on dates with posts -->
+<div id="post-calendar" class="card mb-4">
+  <div class="card-header d-flex align-items-center justify-content-between px-3 py-2">
+    <button id="cal-prev" aria-label="Previous month" style="background:none;border:none;cursor:pointer;color:var(--text-muted-color);padding:0 4px;font-size:0.9rem;">&#8249;</button>
+    <span id="cal-title" style="font-size:0.8rem;font-weight:600;letter-spacing:0.05em;color:var(--label-color);text-transform:uppercase;"></span>
+    <button id="cal-next" aria-label="Next month" style="background:none;border:none;cursor:pointer;color:var(--text-muted-color);padding:0 4px;font-size:0.9rem;">&#8250;</button>
+  </div>
+  <div class="card-body p-2">
+    <table id="cal-table" style="width:100%;border-collapse:collapse;table-layout:fixed;">
+      <thead>
+        <tr id="cal-head"></tr>
+      </thead>
+      <tbody id="cal-body"></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+(function () {
+  /* Post dates injected by Jekyll */
+  const postDates = new Set([
+    {% for post in site.posts %}
+      "{{ post.date | date: '%Y-%m-%d' }}"{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]);
+
+  const DAYS = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+  const MONTHS = ['January','February','March','April','May','June',
+                  'July','August','September','October','November','December'];
+
+  let current = new Date();
+  current.setDate(1);
+
+  function render() {
+    const year = current.getFullYear();
+    const month = current.getMonth();
+    const today = new Date();
+
+    document.getElementById('cal-title').textContent =
+      MONTHS[month] + ' ' + year;
+
+    /* Header row */
+    const head = document.getElementById('cal-head');
+    head.innerHTML = '';
+    DAYS.forEach(d => {
+      const th = document.createElement('th');
+      th.textContent = d;
+      th.style.cssText = 'font-size:0.65rem;text-align:center;padding:2px 0;color:var(--text-muted-color);font-weight:500;';
+      head.appendChild(th);
+    });
+
+    /* Body */
+    const body = document.getElementById('cal-body');
+    body.innerHTML = '';
+
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    let row = document.createElement('tr');
+    let col = 0;
+
+    /* Leading empty cells */
+    for (let i = 0; i < firstDay; i++) {
+      row.appendChild(document.createElement('td'));
+      col++;
+    }
+
+    for (let day = 1; day <= daysInMonth; day++) {
+      if (col === 7) {
+        body.appendChild(row);
+        row = document.createElement('tr');
+        col = 0;
+      }
+
+      const dateStr = year + '-'
+        + String(month + 1).padStart(2, '0') + '-'
+        + String(day).padStart(2, '0');
+
+      const isToday = day === today.getDate()
+        && month === today.getMonth()
+        && year === today.getFullYear();
+
+      const hasPost = postDates.has(dateStr);
+
+      const td = document.createElement('td');
+      td.style.cssText = 'text-align:center;padding:1px 0;position:relative;';
+
+      const span = document.createElement('span');
+      span.textContent = day;
+      span.style.cssText = [
+        'display:inline-flex;align-items:center;justify-content:center;',
+        'width:22px;height:22px;border-radius:50%;font-size:0.72rem;',
+        'position:relative;',
+        isToday
+          ? 'background:var(--link-color);color:#fff;font-weight:700;'
+          : 'color:var(--text-color);'
+      ].join('');
+
+      if (hasPost && !isToday) {
+        const dot = document.createElement('span');
+        dot.style.cssText = [
+          'position:absolute;bottom:1px;left:50%;transform:translateX(-50%);',
+          'width:4px;height:4px;border-radius:50%;',
+          'background:var(--link-color);'
+        ].join('');
+        span.appendChild(dot);
+      }
+
+      td.appendChild(span);
+      row.appendChild(td);
+      col++;
+    }
+
+    /* Trailing empty cells */
+    while (col < 7 && col > 0) {
+      row.appendChild(document.createElement('td'));
+      col++;
+    }
+    body.appendChild(row);
+  }
+
+  document.getElementById('cal-prev').addEventListener('click', function () {
+    current.setMonth(current.getMonth() - 1);
+    render();
+  });
+
+  document.getElementById('cal-next').addEventListener('click', function () {
+    current.setMonth(current.getMonth() + 1);
+    render();
+  });
+
+  render();
+})();
+</script>
