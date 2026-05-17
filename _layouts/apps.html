@@ -11,7 +11,7 @@ layout: default
           <div class="card-body d-flex align-items-start gap-3 p-4">
             <div class="flex-shrink-0">
               {% if app.logo %}
-                <img src="{{ app.logo }}" alt="{{ app.name }} logo" style="width:48px;height:48px;object-fit:contain;">
+                <div style="width:48px;height:48px;background-image:url('{{ app.logo }}');background-size:contain;background-repeat:no-repeat;background-position:center;border-radius:8px;flex-shrink:0;"></div>
               {% else %}
                 <span class="fs-2 text-muted"><i class="{{ app.icon }}"></i></span>
               {% endif %}
