@@ -1,4 +1,9 @@
 - name: "SoNo - Sổ Nợ"
   description: "Track and manage debt between people. Simple, fast, and reliable."
   url: "https://sono.quangnguyen.cc"
-  icon: "fas fa-hand-holding-usd"
+  logo: "/assets/img/apps/sono-logo.svg"
+
+- name: "Films"
+  description: "My personal film diary and watchlist."
+  url: "https://film.quangnguyen.cc"
+  icon: "fas fa-film"

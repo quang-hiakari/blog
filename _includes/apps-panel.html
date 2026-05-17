@@ -1,0 +1,19 @@
+<!-- Apps panel: shows app cards in the right sidebar -->
+<section id="apps-panel" class="mt-4">
+  <h2 class="panel-heading">Apps</h2>
+  <div class="d-flex flex-column gap-2">
+    {% for app in site.data.apps %}
+      <a href="{{ app.url }}" target="_blank" rel="noopener noreferrer"
+         class="d-flex align-items-center gap-2 text-decoration-none"
+         style="color:inherit;">
+        {% if app.logo %}
+          <img src="{{ app.logo }}" alt="{{ app.name }}" style="width:28px;height:28px;object-fit:contain;flex-shrink:0;">
+        {% else %}
+          <i class="{{ app.icon }} fa-fw" style="width:28px;text-align:center;flex-shrink:0;"></i>
+        {% endif %}
+        <span class="small">{{ app.name }}</span>
+        <i class="fas fa-external-link-alt fa-xs ms-auto opacity-50"></i>
+      </a>
+    {% endfor %}
+  </div>
+</section>

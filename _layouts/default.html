@@ -41,6 +41,8 @@ layout: compress
               {% include_cached trending-tags.html lang=lang %}
             </div>
 
+            {% include apps-panel.html lang=lang %}
+
             {% for _include in layout.panel_includes %}
               {% assign _include_path = _include | append: '.html' %}
               {% unless _include == 'post-calendar' %}
