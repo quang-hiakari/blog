@@ -1,0 +1,27 @@
+---
+layout: default
+---
+
+<div class="px-xl-1">
+  <h1 class="mt-2 mb-4">Apps</h1>
+  <div class="row g-4">
+    {% for app in site.data.apps %}
+      <div class="col-12 col-md-6">
+        <a href="{{ app.url }}" target="_blank" rel="noopener noreferrer" class="card-wrapper card text-decoration-none d-block h-100">
+          <div class="card-body d-flex align-items-start gap-3 p-4">
+            <div class="fs-2 text-muted">
+              <i class="{{ app.icon }}"></i>
+            </div>
+            <div>
+              <h5 class="card-title mb-1">{{ app.name }}</h5>
+              <p class="card-text text-muted small mb-0">{{ app.description }}</p>
+              <span class="small text-muted mt-2 d-inline-block">
+                <i class="fas fa-external-link-alt fa-xs me-1"></i>{{ app.url | remove: 'https://' }}
+              </span>
+            </div>
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
